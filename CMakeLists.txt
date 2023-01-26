@@ -3,6 +3,7 @@
 # Author: Olivier Stasse Author: Guilhem Saurel
 #
 cmake_minimum_required(VERSION 3.1)
+cmake_policy(SET CMP0057 NEW)
 
 # Project properties
 set(PROJECT_ORG stack-of-tasks)
@@ -36,18 +37,14 @@ add_project_dependency(control_toolbox REQUIRED)
 add_required_dependency(bullet)
 add_required_dependency(urdfdom)
 
-find_package(
-  catkin REQUIRED
-  COMPONENTS pal_hardware_interfaces
-             controller_interface
-             controller_manager
-             pal_common_msgs
-             roscpp
-             std_msgs
-             control_msgs
-             sensor_msgs
-             realtime_tools
-             rospy)
+add_project_dependency(controller_interface)
+add_project_dependency(controller_manager)
+add_project_dependency(roscpp)
+add_project_dependency(std_msgs)
+add_project_dependency(control_msgs)
+add_project_dependency(sensor_msgs)
+add_project_dependency(realtime_tools)
+add_project_dependency(rospy)
 find_package(temperature_sensor_controller)
 
 # Detect the controller interface version to switch code
